@@ -1,0 +1,855 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 3000;
+    background-color: white;
+    margin: 0 !important;
+    padding: 15px 40px;
+    border-bottom: 1px solid #f0f0f0;
+
+}
+
+.navbar__s1 {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar__s2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.navbar__s2 p {
+    margin: 0;
+    /* Prevents default paragraph spacing from pushing items down */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.navbar__s2 p:hover {
+    border: none;
+    font-weight: 600;
+    transition: 0.2s;
+    transform: scale(1.2);
+}
+
+.navbar__s2 p::after {
+    display: block;
+    content: attr(data-text);
+    /* You'd need to add data-text="Rewards" to your HTML */
+    font-weight: 600;
+    font-size: 25px;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.signin-btn {
+    background-color: #0b1c2d;
+    color: white;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.signin-btn:hover {
+    background-color: #132f4c;
+}
+
+.middle__s1 {
+    margin-left: 550px;
+    font-size: 60px;
+}
+
+.categories {
+    position: sticky;
+    z-index: 2999;
+    display: flex;
+    padding: 0px;
+    border-bottom: solid black 1px;
+    justify-content: space-around;
+    margin-top: 10px;
+    background-color: white;
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.categories p {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.categories p:hover {
+    transition: 1s;
+    background-color: transparent;
+    color: black;
+    border: solid #A435F0 1px;
+}
+
+.searchbar {
+    padding: 5px;
+    border: solid black 1px;
+    border-radius: 30px;
+    width: 60%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 250px;
+}
+
+.searchbar input {
+    border: none;
+    font-size: 16px;
+    width: 100%;
+}
+
+.searchbar input:focus {
+    outline: none;
+}
+
+.search-btn {
+    background-color: green;
+    color: white;
+    padding: 12px 35px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.image {
+    position: relative;
+}
+
+.image img {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Container for the captions */
+.banner-captions {
+    position: absolute;
+    top: 60px;
+    /* Distance from the top of the green section */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Perfectly centers the element */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.caption {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #004f32;
+    /* Tripadvisor green */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+
+    /* Smooth floating animation */
+    animation: floatCenter 3s ease-in infinite;
+}
+
+/* Subtle staggered delay for multiple captions */
+.cap-2 {
+    animation-delay: 0.5s;
+}
+
+@keyframes floatCenter {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 600px) {
+    .banner-captions {
+        top: 30px;
+        /* Moves it up slightly to save space */
+        width: 90%;
+        /* Ensures it stays within the screen bounds */
+    }
+
+    .caption {
+        font-size: 12px;
+        /* Smaller text for mobile */
+        padding: 6px 12px;
+        /* Thinner pill shape */
+        white-space: normal;
+        /* Allows text to wrap if it's still too long */
+        text-align: center;
+        max-width: 250px;
+        /* Prevents the pill from stretching too wide */
+    }
+}
+
+.main {
+    margin-top:10px;
+}
+.main h2{
+    margin-top:10px;
+}
+
+.main p {
+    padding: 5px;
+}
+
+/* This ensures the cards sit horizontally on desktop */
+.img__container {
+    display: flex;
+    flex-direction: row;
+    /* Horizontal layout */
+    justify-content: space-between;
+    /* Spreads them evenly */
+    flex-wrap: nowrap;
+    /* Keeps them in one line on desktop */
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Ensures each card has a proper width on desktop */
+.images {
+    flex: 1;
+    /* Makes all cards equal width */
+    min-width: 0;
+}
+
+.images img {
+    width: 100%;
+    height: auto;
+    /* Uniform height for a professional look */
+    display: block;
+    border-radius: 12px;
+}
+
+/* This switches the layout to vertical for mobile phones */
+@media (max-width: 768px) {
+    .img__container {
+        flex-wrap: wrap;
+        /* Allows items to jump to the next row */
+        gap: 15px;
+    }
+
+    .images {
+        /* (100% / 2) - gap adjustment = exactly 2 per row */
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    .images img {
+        height: 200px !important;
+        /* Shorter images for mobile screens */
+    }
+
+    .images h2 {
+        font-size: 16px;
+    }
+}
+
+.images h2 {
+    cursor: pointer;
+    color: #132f4c;
+}
+
+.banner-container {
+    /* Layout */
+    display: flex;
+    justify-content: space-between;
+    /* Pushes text to left, button to right */
+    align-items: center;
+    margin-top: 35px;
+
+    /* Styling */
+    background-color: #89d9ad;
+    /* The mint green from your image */
+    padding: 20px 40px;
+    border-radius: 12px;
+    font-family: sans-serif;
+    color: #1a4d33;
+    /* Dark green text */
+}
+
+.banner-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* Space between the phone image and the text */
+}
+
+.banner-img {
+    width: 120px;
+    /* Adjust based on your image size */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.banner-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.banner-text p {
+    margin: 5px 0 0;
+    font-size: 1rem;
+}
+
+.get-started-btn {
+    background-color: #e8e8e8;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    /* Makes the button pill-shaped */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.get-started-btn:hover {
+    background-color: #d1d1d1;
+}
+
+/* Desktop: Clean Horizontal Layout */
+.experience {
+    margin-top: 20px;
+}
+
+.course-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Ensures all cards in a row have the same height */
+}
+
+/* Tightens the spacing for the text inside the cards */
+.course-card p {
+    margin: 4px 0;
+    /* Reduces top and bottom margin to 4px */
+    line-height: 1.2;
+    /* Keeps lines close together */
+}
+
+/* Optional: Specifically targets the 'from price' to move it closer to the rating */
+.course-card p:last-child {
+    margin-top: auto;
+    padding-top: 10px;
+}
+
+.course-card p:nth-last-child(2) {
+    margin-top: auto;
+}
+
+/* Desktop: 4 images in one row */
+.img__container,
+.popular__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* Keeps all 4 in one row on desktop */
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.images,
+.course-card {
+    flex: 1;
+    /* Ensures all 4 take equal space */
+}
+
+.images img,
+.course-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* Mobile: 2 images per row (2x2 Grid) */
+@media (max-width: 768px) {
+
+    .img__container,
+    .popular__container {
+        flex-wrap: wrap;
+        /* Allows wrapping to a second row */
+        gap: 10px;
+    }
+
+    .images,
+    .course-card {
+        /* (100% / 2) minus gap = exactly 2 per row */
+        flex: 0 0 calc(50% - 10px);
+    }
+}
+
+.hero-container {
+    margin-top: 50px;
+    display: flex;
+    /* This creates the side-by-side layout */
+    align-items: center;
+    background-color: #f3f5f7;
+    min-height: 500px;
+    width: 100%;
+}
+
+/* Left Side Styles */
+.image-box {
+    flex: 1;
+    /* Takes up 50% width */
+    position: relative;
+    height: 500px;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+
+}
+
+.kiva-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+/* Right Side Styles */
+.content-box {
+    flex: 1;
+    /* Takes up 50% width */
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.brand {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2c2e5b;
+    margin-bottom: 15px;
+    line-height: 1.1;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.donate-btn {
+    background-color: #58616a;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.donate-btn:hover {
+    background-color: #333;
+}
+
+/* Responsive: Stacks on mobile */
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .image-box {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+.eyes {
+    margin-top: 20px;
+}
+
+.eyes__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* Prevents wrapping on desktop */
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+}
+
+.eyes-card {
+    /* Removes the unwanted 5px global margin */
+    flex: 1;
+}
+
+.eyes-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+/* Mobile: Vertical View with Zero Wasted Space */
+@media (max-width: 768px) {
+    .eyes {
+        padding: 15px;
+        /* Standard professional edge padding */
+    }
+
+    .eyes__container {
+        flex-wrap: wrap; /* Allows cards to move to the next row */
+        gap: 15px;
+    }
+
+    .eyes-card {
+       /* (100% / 2) minus gap = exactly 2 per row */
+        flex: 0 0 calc(50% - 10px);
+    }
+
+    .eyes-card img {
+        height: 350px !important;
+        /* Optimized height for mobile screens */
+    }
+
+    .eyes-card h3 {
+        font-size: 1.1rem;
+        margin: 8px 0 4px 0 !important;
+        /* Tightens space around the title */
+    }
+
+    .eyes-card p {
+        margin: 2px 0 !important;
+        /* Tightens space around ratings and price */
+    }
+}
+
+.container-title {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.sub-title {
+    margin-top: 0;
+    color: #555;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+/* Gallery Grid */
+.gallery {
+    display: flex;
+    gap: 15px;
+    /* Space between cards */
+    flex-wrap: wrap;
+}
+
+/* Individual Card */
+.card {
+    flex: 1;
+    min-width: 220px;
+    height: 300px;
+    border-radius: 8px;
+    /* Matching the rounded corners in your image */
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Text Overlay Styling */
+.text-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+    color: white;
+    font-size: 18px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .card {
+        min-width: 45%;
+    }
+}
+
+.content-title {
+    margin-top: 30px;
+    margin-bottom: 25px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* Gallery Grid */
+.galleries {
+    display: flex;
+    gap: 15px;
+    /* Space between cards */
+    flex-wrap: wrap;
+}
+
+/* Individual Card */
+.gallerycard {
+    flex: 1;
+    min-width: 220px;
+    height: 300px;
+    border-radius: 8px;
+    /* Matching the rounded corners in your image */
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.gallerycard:hover {
+    transform: scale(1.02);
+}
+
+/* Text Overlay Styling */
+.text-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 15px;
+    right: 15px;
+    color: white;
+    font-size: 18px;
+    line-height: 1.2;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .card {
+        min-width: 45%;
+    }
+}
+
+.site-footer {
+    margin-top: 25px;
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 50px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Link Columns */
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+/* Divider Line */
+.footer-divider {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.legal-links a {
+    margin-right: 15px;
+    text-decoration: underline;
+    color: #333;
+    font-size: 12px;
+}
+
+.selectors select {
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+    background: white;
+}
+
+/* TABLET VIEW (Screens smaller than 1024px) */
+@media (max-width: 1024px) {
+    .navbar__s2 {
+        gap: 20px;
+        font-size: 16px;
+    }
+
+    .middle__s1 {
+        margin-left: 0;
+        text-align: center;
+        font-size: 45px;
+    }
+
+    .searchbar {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+    }
+
+    .img__container,
+    .popular__container,
+    .eyes__container {
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+/* MOBILE VIEW (Screens smaller than 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .navbar__s2 {
+        display: none;
+        /* Hides menu links on mobile to save space */
+    }
+
+    .middle__s1 {
+        font-size: 35px;
+    }
+
+    .categories {
+        overflow-x: auto;
+        /* Allows swiping left/right on icons */
+        justify-content: flex-start;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .categories p {
+        white-space: nowrap;
+        /* Prevents text from breaking */
+    }
+
+    .searchbar {
+        width: 95%;
+        margin-left: 10px;
+    }
+
+    .image {
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 300px;
+    }
+
+    .banner-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+}
